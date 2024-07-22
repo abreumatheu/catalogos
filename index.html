@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo Online - Argentum</title>
+    <link rel="stylesheet" href="style.css">
+    <script>
+        function openChat() {
+            var chatContainer = document.getElementById('chat-container');
+            if (chatContainer.style.display === 'none' || chatContainer.style.display === '') {
+                chatContainer.style.display = 'flex';
+            } else {
+                chatContainer.style.display = 'none';
+            }
+        }
+
+        function sendMessage() {
+            var input = document.getElementById('chat-input-field');
+            var message = input.value.trim();
+            if (message !== '') {
+                var chatBody = document.getElementById('chat-body');
+                var userMessage = document.createElement('div');
+                userMessage.style.marginBottom = '10px';
+                userMessage.textContent = 'Você: ' + message;
+                chatBody.appendChild(userMessage);
+
+                var botMessage = document.createElement('div');
+                botMessage.style.marginBottom = '10px';
+                botMessage.textContent = 'Bot: ' + simulateResponse(message);
+                chatBody.appendChild(botMessage);
+
+                input.value = '';
+                chatBody.scrollTop = chatBody.scrollHeight;
+            }
+        }
+
+        function simulateResponse(message) {
+            // Simule uma resposta do GPT
+            return 'Esta é uma resposta simulada para "' + message + '"';
+        }
+
+        function toggleMenu() {
+            var menu = document.getElementById('nav-menu');
+            if (menu.style.display === 'flex') {
+                menu.style.display = 'none';
+            } else {
+                menu.style.display = 'flex';
+            }
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <img src="logo.png" alt="Logo Argentum">
+        </div>
+        <span class="menu-toggle" onclick="toggleMenu()">☰</span>
+        <nav id="nav-menu">
+            <ul>
+                <li><a href="https://drive.google.com/drive/folders/1J9VcIYh9tiOd0KgueBPdVSyIzZTlTfT2?usp=drive_link" target="_blank">Lançamentos</a></li>
+                <li><a href="https://drive.google.com/file/d/1q-I3zmgdnP8H2ajhv9-p9birAA5K99wX/view?usp=sharing" target="_blank">Aneis</a></li>
+                <li><a href="https://drive.google.com/file/d/1DJETbSmB1gTo2M6s5RygqycVopbaNi3t/view?usp=sharing" target="_blank">Braceletes</a></li>
+                <li><a href="https://drive.google.com/file/d/1FWt0QkaVtRI0J9R20jPuIK22SMj1tsfW/view?usp=sharing" target="_blank">Brincos</a></li>
+                <li><a href="https://drive.google.com/file/d/1gnY-8niACn3Vz-zgaAxKePttlFF9ZDiR/view?usp=sharing" target="_blank">Colares</a></li>
+                <li><a href="https://drive.google.com/file/d/1EUebKq8CVkbJo_BCYBnNb5D_GEMTvzGY/view?usp=sharing" target="_blank">Conjuntos</a></li>
+                <li><a href="https://drive.google.com/file/d/1hMFQJ8I15dSupay8gELsRLr6MfpIUsx5/view?usp=sharing" target="_blank">Pingentes</a></li>
+                <li><a href="https://drive.google.com/file/d/10P7_dzag2xZAIWQL8m_J9V27YlnXWqF7/view?usp=sharing" target="_blank">Pulseiras e tornozeleiras</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="intro">
+        <h2>Bem-vindo ao Catálogo Online da Argentum!</h2>
+        <p>Explore nosso catálogo completo com todos os produtos e lançamentos disponíveis em nossa loja. Caso se interesse por algum item ou tenha dúvidas, entre em contato conosco via Instagram ou WhatsApp para mais informações.</p>
+    </div>
+    <div class="product-gallery">
+        <a href="produto1.html">
+            <img src="whatsapp.png" alt="WhatsApp">
+        </a>
+        <a href="https://www.instagram.com/argentumpratas925/">
+            <img src="instagram.png" alt="Instagram">
+        </a>
+        <!-- mais produtos -->
+    </div>
+    <button class="floating-button" onclick="openChat()">💬</button>
+    <div id="chat-container">
+        <div id="chat-header">Chat com o GPT</div>
+        <div id="chat-body"></div>
+        <div id="chat-input">
+            <input id="chat-input-field" type="text" placeholder="Digite sua mensagem...">
+            <button onclick="sendMessage()">Enviar</button>
+        </div>
+    </div>
+</body>
+</html>
